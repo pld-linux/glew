@@ -1,0 +1,12 @@
+diff -ruN glew./Makefile glew/Makefile
+--- glew./Makefile	2006-03-03 00:02:51.000000000 +0100
++++ glew/Makefile	2006-03-23 21:35:00.329447688 +0100
+@@ -76,7 +76,7 @@
+ VISUALINFO.BIN = visualinfo$(BIN.SUFFIX)
+ VISUALINFO.BIN.SRCS = src/visualinfo.c
+ VISUALINFO.BIN.OBJS = $(VISUALINFO_BIN.SRCS:.c=.o)
+-BIN.LIBS = -Llib $(LDFLAGS.STATIC) -l$(NAME) $(LDFLAGS.EXTRA) $(LDFLAGS.DYNAMIC) $(LDFLAGS.GL)
++BIN.LIBS = -Llib -l$(NAME) $(LDFLAGS.EXTRA) $(LDFLAGS.GL)
+ 
+ all debug: lib/$(LIB.SHARED) lib/$(LIB.STATIC) bin/$(GLEWINFO.BIN) bin/$(VISUALINFO.BIN)
+ 
