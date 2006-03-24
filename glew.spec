@@ -10,8 +10,8 @@ Source0:	http://download.sourceforge.net/glew/%{name}-%{version}-src.tgz
 Patch0:		%{name}-dynamic-progs.patch
 URL:		http://glew.sourceforge.net/
 BuildRequires:	OpenGL-GLU-devel
-BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	xorg-lib-libXi-devel
+BuildRequires:	xorg-lib-libXmu-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,8 +34,8 @@ Summary(pl):	Pliki nag³ówkowe glew
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL-GLU-devel
-Requires:	xorg-lib-libXmu-devel
 Requires:	xorg-lib-libXi-devel
+Requires:	xorg-lib-libXmu-devel
 
 %description devel
 Header files for glew.
