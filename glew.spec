@@ -1,5 +1,5 @@
 Summary:	The OpenGL Extension Wrangler Library
-Summary(pl):	Bibliteka OpenGL Extension Wrangler
+Summary(pl.UTF-8):   Bibliteka OpenGL Extension Wrangler
 Name:		glew
 Version:	1.3.5
 Release:	1
@@ -21,16 +21,16 @@ mechanisms for determining which OpenGL extensions are supported on
 the target platform. OpenGL core and extension functionality is
 exposed in a single header file.
 
-%description -l pl
-OpenGL Extension Wrangler Library (GLEW) jest miêdzyplatformow±
-bibliotek± C/C++ ³aduj±c± rozszerzenia. GLEW zapewnia wydajne
-mechanizmy rozpoznaj±ce które rozszerzenia s± dostêpne w czasie
-wykonywania programu. Funkcjonalno¶æ rdzenia OpenGL i rozszerzeñ
-jest udostêpniana w pojedynczym pliku nag³ówkowym.
+%description -l pl.UTF-8
+OpenGL Extension Wrangler Library (GLEW) jest miÄ™dzyplatformowÄ…
+bibliotekÄ… C/C++ Å‚adujÄ…cÄ… rozszerzenia. GLEW zapewnia wydajne
+mechanizmy rozpoznajÄ…ce ktÃ³re rozszerzenia sÄ… dostÄ™pne w czasie
+wykonywania programu. FunkcjonalnoÅ›Ä‡ rdzenia OpenGL i rozszerzeÅ„
+jest udostÄ™pniana w pojedynczym pliku nagÅ‚Ã³wkowym.
 
 %package devel
 Summary:	Header files for glew
-Summary(pl):	Pliki nag³ówkowe glew
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe glew
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL-GLU-devel
@@ -40,19 +40,19 @@ Requires:	xorg-lib-libXmu-devel
 %description devel
 Header files for glew.
 
-%description devel -l pl
-Pliki nag³ówkowe glew.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe glew.
 
 %package static
 Summary:	Static glew library
-Summary(pl):	Biblioteka statyczna glew
+Summary(pl.UTF-8):   Biblioteka statyczna glew
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static glew library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteka statyczna glew.
 
 %prep
