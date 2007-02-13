@@ -1,5 +1,5 @@
 Summary:	The OpenGL Extension Wrangler Library
-Summary(pl.UTF-8):   Bibliteka OpenGL Extension Wrangler
+Summary(pl.UTF-8):	Bibliteka OpenGL Extension Wrangler
 Name:		glew
 Version:	1.3.5
 Release:	1
@@ -30,7 +30,7 @@ jest udostępniana w pojedynczym pliku nagłówkowym.
 
 %package devel
 Summary:	Header files for glew
-Summary(pl.UTF-8):   Pliki nagłówkowe glew
+Summary(pl.UTF-8):	Pliki nagłówkowe glew
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL-GLU-devel
@@ -45,7 +45,7 @@ Pliki nagłówkowe glew.
 
 %package static
 Summary:	Static glew library
-Summary(pl.UTF-8):   Biblioteka statyczna glew
+Summary(pl.UTF-8):	Biblioteka statyczna glew
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
