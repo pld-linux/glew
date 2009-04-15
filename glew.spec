@@ -1,32 +1,33 @@
 Summary:	The OpenGL Extension Wrangler Library
 Summary(pl.UTF-8):	Bibliteka OpenGL Extension Wrangler
 Name:		glew
-Version:	1.5.0
+Version:	1.5.1
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/glew/%{name}-%{version}-src.tgz
-# Source0-md5:	3fececda0151b060c08ffd8a12892741
+# Source0-md5:	759a59853dfaae4d007b414a3c1712f2
 Patch0:		%{name}-dynamic-progs.patch
 URL:		http://glew.sourceforge.net/
 BuildRequires:	OpenGL-GLU-devel
+BuildRequires:	dos2unix
 BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXmu-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The OpenGL Extension Wrangler Library (GLEW) is a cross-platform
-C/C++ extension loading library. GLEW provides efficient run-time
-mechanisms for determining which OpenGL extensions are supported on
-the target platform. OpenGL core and extension functionality is
-exposed in a single header file.
+The OpenGL Extension Wrangler Library (GLEW) is a cross-platform C/C++
+extension loading library. GLEW provides efficient run-time mechanisms
+for determining which OpenGL extensions are supported on the target
+platform. OpenGL core and extension functionality is exposed in a
+single header file.
 
 %description -l pl.UTF-8
 OpenGL Extension Wrangler Library (GLEW) jest międzyplatformową
 biblioteką C/C++ ładującą rozszerzenia. GLEW zapewnia wydajne
 mechanizmy rozpoznające które rozszerzenia są dostępne w czasie
-wykonywania programu. Funkcjonalność rdzenia OpenGL i rozszerzeń
-jest udostępniana w pojedynczym pliku nagłówkowym.
+wykonywania programu. Funkcjonalność rdzenia OpenGL i rozszerzeń jest
+udostępniana w pojedynczym pliku nagłówkowym.
 
 %package devel
 Summary:	Header files for glew
@@ -56,8 +57,9 @@ Static glew library.
 Biblioteka statyczna glew.
 
 %prep
-%setup -q -n glew
+%setup -q -n %{name}
 %patch0 -p1
+dos2unix config/config.guess
 
 %build
 %{__make} \
@@ -84,7 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc LICENSE.txt README.txt doc/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/libGLEW.so.*.*.*
-%ghost %attr(755,root,root) %{_libdir}/libGLEW.so.?.?
+%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.?.?
 
 %files devel
 %defattr(644,root,root,755)
