@@ -58,8 +58,8 @@ Biblioteka statyczna glew.
 
 %prep
 %setup -q -n %{name}
+dos2unix config/config.guess Makefile
 %patch0 -p1
-dos2unix config/config.guess
 
 %build
 %{__make} \
