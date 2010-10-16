@@ -1,16 +1,16 @@
 Summary:	The OpenGL Extension Wrangler Library
 Summary(pl.UTF-8):	Bibliteka OpenGL Extension Wrangler
 Name:		glew
-Version:	1.5.1
+Version:	1.5.6
 Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/glew/%{name}-%{version}-src.tgz
-# Source0-md5:	759a59853dfaae4d007b414a3c1712f2
+Source0:	http://downloads.sourceforge.net/glew/%{name}-%{version}.tgz
+# Source0-md5:	e6f56eb765f1da489a1327793adcf6bb
 Patch0:		%{name}-dynamic-progs.patch
 URL:		http://glew.sourceforge.net/
 BuildRequires:	OpenGL-GLU-devel
-BuildRequires:	dos2unix
+BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXmu-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -35,6 +35,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe glew
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL-GLU-devel
+Requires:	xorg-lib-libXext-devel
 Requires:	xorg-lib-libXi-devel
 Requires:	xorg-lib-libXmu-devel
 
@@ -57,23 +58,24 @@ Static glew library.
 Biblioteka statyczna glew.
 
 %prep
-%setup -q -n %{name}
-dos2unix config/config.guess Makefile
+%setup -q
 %patch0 -p1
 
 %build
 %{__make} \
 	CC="%{__cc}" \
 	OPT="%{rpmcflags}" \
-	LDFLAGS="%{rpmldflags}"
+	LDFLAGS="%{rpmldflags}" \
+	LIBDIR=%{_libdir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir},%{_bindir},%{_includedir}/GL}
+install -d $RPM_BUILD_ROOT{%{_libdir},%{_bindir},%{_includedir}/GL,%{_pkgconfigdir}}
 
 install bin/* $RPM_BUILD_ROOT%{_bindir}
 cp -d lib/* $RPM_BUILD_ROOT%{_libdir}
-install include/GL/* $RPM_BUILD_ROOT%{_includedir}/GL
+install include/GL/{glew,glxew}.h $RPM_BUILD_ROOT%{_includedir}/GL
+install glew.pc $RPM_BUILD_ROOT%{_pkgconfigdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -83,15 +85,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE.txt README.txt doc/*
-%attr(755,root,root) %{_bindir}/*
+%doc LICENSE.txt README.txt TODO.txt doc/*.{html,css,png,jpg}
+%attr(755,root,root) %{_bindir}/glewinfo
+%attr(755,root,root) %{_bindir}/visualinfo
 %attr(755,root,root) %{_libdir}/libGLEW.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.?.?
+%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.1.5
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libGLEW.so
-%{_includedir}/GL/*.h
+%{_includedir}/GL/glew.h
+%{_includedir}/GL/glxew.h
+%{_pkgconfigdir}/glew.pc
 
 %files static
 %defattr(644,root,root,755)
