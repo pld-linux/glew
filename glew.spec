@@ -1,12 +1,12 @@
 Summary:	The OpenGL Extension Wrangler Library
 Summary(pl.UTF-8):	Bibliteka OpenGL Extension Wrangler
 Name:		glew
-Version:	1.5.8
+Version:	1.6.0
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/glew/%{name}-%{version}.tgz
-# Source0-md5:	342c8dc64fb9daa6af245b132e086bdd
+# Source0-md5:	7dfbb444b5a4e125bc5dba0aef403082
 Patch0:		%{name}-dynamic-progs.patch
 URL:		http://glew.sourceforge.net/
 BuildRequires:	OpenGL-GLU-devel
@@ -75,7 +75,7 @@ install -d $RPM_BUILD_ROOT{%{_libdir},%{_bindir},%{_includedir}/GL,%{_pkgconfigd
 install bin/* $RPM_BUILD_ROOT%{_bindir}
 cp -d lib/* $RPM_BUILD_ROOT%{_libdir}
 install include/GL/{glew,glxew}.h $RPM_BUILD_ROOT%{_includedir}/GL
-install glew.pc $RPM_BUILD_ROOT%{_pkgconfigdir}
+install glew.pc glewmx.pc $RPM_BUILD_ROOT%{_pkgconfigdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -89,15 +89,20 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/glewinfo
 %attr(755,root,root) %{_bindir}/visualinfo
 %attr(755,root,root) %{_libdir}/libGLEW.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.1.5
+%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.1.6
+%attr(755,root,root) %{_libdir}/libGLEWmx.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libGLEWmx.so.1.6
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libGLEW.so
+%attr(755,root,root) %{_libdir}/libGLEWmx.so
 %{_includedir}/GL/glew.h
 %{_includedir}/GL/glxew.h
 %{_pkgconfigdir}/glew.pc
+%{_pkgconfigdir}/glewmx.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libGLEW.a
+%{_libdir}/libGLEWmx.a
