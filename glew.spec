@@ -1,12 +1,12 @@
 Summary:	The OpenGL Extension Wrangler Library
 Summary(pl.UTF-8):	Bibliteka OpenGL Extension Wrangler
 Name:		glew
-Version:	1.6.0
+Version:	1.7.0
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/glew/%{name}-%{version}.tgz
-# Source0-md5:	7dfbb444b5a4e125bc5dba0aef403082
+# Source0-md5:	fb7a8bb79187ac98a90b57f0f27a3e84
 Patch0:		%{name}-dynamic-progs.patch
 URL:		http://glew.sourceforge.net/
 BuildRequires:	OpenGL-GLU-devel
@@ -89,9 +89,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/glewinfo
 %attr(755,root,root) %{_bindir}/visualinfo
 %attr(755,root,root) %{_libdir}/libGLEW.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.1.6
+%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.1.7
 %attr(755,root,root) %{_libdir}/libGLEWmx.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libGLEWmx.so.1.6
+%attr(755,root,root) %ghost %{_libdir}/libGLEWmx.so.1.7
 
 %files devel
 %defattr(644,root,root,755)
