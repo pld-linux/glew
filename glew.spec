@@ -1,17 +1,15 @@
 Summary:	The OpenGL Extension Wrangler Library
 Summary(pl.UTF-8):	Bibliteka OpenGL Extension Wrangler
 Name:		glew
-Version:	1.12.0
+Version:	1.13.0
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/glew/%{name}-%{version}.tgz
-# Source0-md5:	01246c7ecd135d99be031aa63f86dca1
+# Source0-md5:	7cbada3166d2aadfc4169c4283701066
 URL:		http://glew.sourceforge.net/
 BuildRequires:	OpenGL-GLU-devel
-BuildRequires:	xorg-lib-libXext-devel
-BuildRequires:	xorg-lib-libXi-devel
-BuildRequires:	xorg-lib-libXmu-devel
+BuildRequires:	xorg-lib-libX11-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,9 +32,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe glew
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL-GLU-devel
-Requires:	xorg-lib-libXext-devel
-Requires:	xorg-lib-libXi-devel
-Requires:	xorg-lib-libXmu-devel
+Requires:	xorg-lib-libX11-devel
 
 %description devel
 Header files for glew.
@@ -87,9 +83,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/glewinfo
 %attr(755,root,root) %{_bindir}/visualinfo
 %attr(755,root,root) %{_libdir}/libGLEW.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.1.12
+%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.1.13
 %attr(755,root,root) %{_libdir}/libGLEWmx.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libGLEWmx.so.1.12
+%attr(755,root,root) %ghost %{_libdir}/libGLEWmx.so.1.13
 
 %files devel
 %defattr(644,root,root,755)
