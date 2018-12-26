@@ -1,12 +1,13 @@
 Summary:	The OpenGL Extension Wrangler Library
 Summary(pl.UTF-8):	Bibliteka OpenGL Extension Wrangler
 Name:		glew
-Version:	1.13.0
-Release:	2
+Version:	2.1.0
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/glew/%{name}-%{version}.tgz
-# Source0-md5:	7cbada3166d2aadfc4169c4283701066
+# Source0-md5:	b2ab12331033ddfaa50dc39345343980
+Patch0:		%{name}-eglew.patch
 URL:		http://glew.sourceforge.net/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	xorg-lib-libX11-devel
@@ -54,22 +55,32 @@ Biblioteka statyczna glew.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__make} \
 	CC="%{__cc}" \
 	OPT="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags}" \
+	INCDIR=%{_includedir}/GL \
 	LIBDIR=%{_libdir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir},%{_bindir},%{_includedir}/GL,%{_pkgconfigdir}}
+#install -d $RPM_BUILD_ROOT{%{_libdir},%{_bindir},%{_includedir}/GL,%{_pkgconfigdir}}
 
-install bin/* $RPM_BUILD_ROOT%{_bindir}
-cp -d lib/* $RPM_BUILD_ROOT%{_libdir}
-install include/GL/{glew,glxew}.h $RPM_BUILD_ROOT%{_includedir}/GL
-install glew.pc glewmx.pc $RPM_BUILD_ROOT%{_pkgconfigdir}
+%{__make} install.all \
+	DESTDIR=$RPM_BUILD_ROOT \
+	INCDIR=%{_includedir}/GL \
+	LIBDIR=%{_libdir}
+
+# Win32-specific
+%{__rm} $RPM_BUILD_ROOT%{_includedir}/GL/wglew.h
+
+#install bin/* $RPM_BUILD_ROOT%{_bindir}
+#cp -d lib/* $RPM_BUILD_ROOT%{_libdir}
+#install include/GL/{glew,glxew}.h $RPM_BUILD_ROOT%{_includedir}/GL
+#install glew.pc glewmx.pc $RPM_BUILD_ROOT%{_pkgconfigdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -79,24 +90,20 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE.txt README.txt TODO.txt doc/*.{html,css,png,jpg}
+%doc LICENSE.txt README.md doc/*.{html,css,png,jpg}
 %attr(755,root,root) %{_bindir}/glewinfo
 %attr(755,root,root) %{_bindir}/visualinfo
 %attr(755,root,root) %{_libdir}/libGLEW.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.1.13
-%attr(755,root,root) %{_libdir}/libGLEWmx.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libGLEWmx.so.1.13
+%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.2.1
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libGLEW.so
-%attr(755,root,root) %{_libdir}/libGLEWmx.so
+%{_includedir}/GL/eglew.h
 %{_includedir}/GL/glew.h
 %{_includedir}/GL/glxew.h
 %{_pkgconfigdir}/glew.pc
-%{_pkgconfigdir}/glewmx.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libGLEW.a
-%{_libdir}/libGLEWmx.a

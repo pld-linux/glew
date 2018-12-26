@@ -1,0 +1,10 @@
+--- glew-2.1.0/Makefile.orig	2017-07-31 13:25:39.000000000 +0200
++++ glew-2.1.0/Makefile	2018-12-22 22:11:56.756841925 +0100
+@@ -234,6 +234,7 @@
+ 	$(INSTALL) -m 0644 include/GL/wglew.h "$(DESTDIR)$(INCDIR)/"
+ 	$(INSTALL) -m 0644 include/GL/glew.h "$(DESTDIR)$(INCDIR)/"
+ 	$(INSTALL) -m 0644 include/GL/glxew.h "$(DESTDIR)$(INCDIR)/"
++	$(INSTALL) -m 0644 include/GL/eglew.h "$(DESTDIR)$(INCDIR)/"
+ 
+ install.pkgconfig: glew.pc
+ 	$(INSTALL) -d -m 0755 "$(DESTDIR)$(PKGDIR)"
