@@ -73,7 +73,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install.all \
 	DESTDIR=$RPM_BUILD_ROOT \
 	INCDIR=%{_includedir}/GL \
-	LIBDIR=%{_libdir}
+	LIBDIR=%{_libdir} \
+	PKGDIR=%{_pkgconfigdir}
 
 # Win32-specific
 %{__rm} $RPM_BUILD_ROOT%{_includedir}/GL/wglew.h
