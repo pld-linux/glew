@@ -2,12 +2,13 @@ Summary:	The OpenGL Extension Wrangler Library
 Summary(pl.UTF-8):	Bibliteka OpenGL Extension Wrangler
 Name:		glew
 Version:	2.1.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/glew/%{name}-%{version}.tgz
 # Source0-md5:	b2ab12331033ddfaa50dc39345343980
 Patch0:		%{name}-eglew.patch
+Patch1:		%{name}-const.patch
 URL:		http://glew.sourceforge.net/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	xorg-lib-libX11-devel
@@ -56,6 +57,7 @@ Biblioteka statyczna glew.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} \
