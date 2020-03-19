@@ -1,12 +1,12 @@
 Summary:	The OpenGL Extension Wrangler Library
 Summary(pl.UTF-8):	Bibliteka OpenGL Extension Wrangler
 Name:		glew
-Version:	2.1.0
-Release:	2
+Version:	2.2.0
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/glew/%{name}-%{version}.tgz
-# Source0-md5:	b2ab12331033ddfaa50dc39345343980
+# Source0-md5:	3579164bccaef09e36c0af7f4fd5c7c7
 Patch0:		%{name}-eglew.patch
 Patch1:		%{name}-const.patch
 URL:		http://glew.sourceforge.net/
@@ -70,7 +70,6 @@ Biblioteka statyczna glew.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-#install -d $RPM_BUILD_ROOT{%{_libdir},%{_bindir},%{_includedir}/GL,%{_pkgconfigdir}}
 
 %{__make} install.all \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -80,11 +79,6 @@ rm -rf $RPM_BUILD_ROOT
 
 # Win32-specific
 %{__rm} $RPM_BUILD_ROOT%{_includedir}/GL/wglew.h
-
-#install bin/* $RPM_BUILD_ROOT%{_bindir}
-#cp -d lib/* $RPM_BUILD_ROOT%{_libdir}
-#install include/GL/{glew,glxew}.h $RPM_BUILD_ROOT%{_includedir}/GL
-#install glew.pc glewmx.pc $RPM_BUILD_ROOT%{_pkgconfigdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -98,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/glewinfo
 %attr(755,root,root) %{_bindir}/visualinfo
 %attr(755,root,root) %{_libdir}/libGLEW.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.2.1
+%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.2.2
 
 %files devel
 %defattr(644,root,root,755)

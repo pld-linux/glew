@@ -1,6 +1,6 @@
---- glew-2.1.0/include/GL/glew.h.orig	2017-07-31 13:25:39.000000000 +0200
-+++ glew-2.1.0/include/GL/glew.h	2019-04-05 21:14:07.630613818 +0200
-@@ -3680,7 +3680,7 @@
+--- glew-2.2.0/include/GL/glew.h.orig	2020-03-15 12:53:59.000000000 +0100
++++ glew-2.2.0/include/GL/glew.h	2020-03-19 21:45:56.585955301 +0100
+@@ -3764,7 +3764,7 @@
  #define GL_STORAGE_SHARED_APPLE 0x85BF
  
  typedef void (GLAPIENTRY * PFNGLGETTEXPARAMETERPOINTERVAPPLEPROC) (GLenum target, GLenum pname, void **params);
@@ -9,21 +9,7 @@
  
  #define glGetTexParameterPointervAPPLE GLEW_GET_FUN(__glewGetTexParameterPointervAPPLE)
  #define glTextureRangeAPPLE GLEW_GET_FUN(__glewTextureRangeAPPLE)
-@@ -4594,10 +4594,10 @@
- #ifndef GL_ARB_draw_elements_base_vertex
- #define GL_ARB_draw_elements_base_vertex 1
- 
--typedef void (GLAPIENTRY * PFNGLDRAWELEMENTSBASEVERTEXPROC) (GLenum mode, GLsizei count, GLenum type, void *indices, GLint basevertex);
-+typedef void (GLAPIENTRY * PFNGLDRAWELEMENTSBASEVERTEXPROC) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLint basevertex);
- typedef void (GLAPIENTRY * PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei primcount, GLint basevertex);
--typedef void (GLAPIENTRY * PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC) (GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, void *indices, GLint basevertex);
--typedef void (GLAPIENTRY * PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC) (GLenum mode, GLsizei* count, GLenum type, void**indices, GLsizei primcount, GLint *basevertex);
-+typedef void (GLAPIENTRY * PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC) (GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void *indices, GLint basevertex);
-+typedef void (GLAPIENTRY * PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC) (GLenum mode, const GLsizei* count, GLenum type, const void *const*indices, GLsizei primcount, const GLint *basevertex);
- 
- #define glDrawElementsBaseVertex GLEW_GET_FUN(__glewDrawElementsBaseVertex)
- #define glDrawElementsInstancedBaseVertex GLEW_GET_FUN(__glewDrawElementsInstancedBaseVertex)
-@@ -5581,10 +5581,10 @@
+@@ -5665,10 +5665,10 @@
  #define GL_MATRIX_INDEX_ARRAY_POINTER_ARB 0x8849
  
  typedef void (GLAPIENTRY * PFNGLCURRENTPALETTEMATRIXARBPROC) (GLint index);
@@ -38,7 +24,7 @@
  
  #define glCurrentPaletteMatrixARB GLEW_GET_FUN(__glewCurrentPaletteMatrixARB)
  #define glMatrixIndexPointerARB GLEW_GET_FUN(__glewMatrixIndexPointerARB)
-@@ -7680,10 +7680,10 @@
+@@ -7764,10 +7764,10 @@
  #define GL_TRANSPOSE_TEXTURE_MATRIX_ARB 0x84E5
  #define GL_TRANSPOSE_COLOR_MATRIX_ARB 0x84E6
  
@@ -53,7 +39,7 @@
  
  #define glLoadTransposeMatrixdARB GLEW_GET_FUN(__glewLoadTransposeMatrixdARB)
  #define glLoadTransposeMatrixfARB GLEW_GET_FUN(__glewLoadTransposeMatrixfARB)
-@@ -7915,15 +7915,15 @@
+@@ -7999,15 +7999,15 @@
  #define GL_MODELVIEW31_ARB 0x873F
  
  typedef void (GLAPIENTRY * PFNGLVERTEXBLENDARBPROC) (GLint count);
@@ -78,7 +64,7 @@
  
  #define glVertexBlendARB GLEW_GET_FUN(__glewVertexBlendARB)
  #define glWeightPointerARB GLEW_GET_FUN(__glewWeightPointerARB)
-@@ -8612,8 +8612,8 @@
+@@ -8707,8 +8707,8 @@
  
  typedef void (GLAPIENTRY * PFNGLGETTEXBUMPPARAMETERFVATIPROC) (GLenum pname, GLfloat *param);
  typedef void (GLAPIENTRY * PFNGLGETTEXBUMPPARAMETERIVATIPROC) (GLenum pname, GLint *param);
@@ -89,7 +75,7 @@
  
  #define glGetTexBumpParameterfvATI GLEW_GET_FUN(__glewGetTexBumpParameterfvATI)
  #define glGetTexBumpParameterivATI GLEW_GET_FUN(__glewGetTexBumpParameterivATI)
-@@ -9530,8 +9530,8 @@
+@@ -9681,8 +9681,8 @@
  #define GL_MAP1_BINORMAL_EXT 0x8446
  #define GL_MAP2_BINORMAL_EXT 0x8447
  
@@ -100,7 +86,7 @@
  
  #define glBinormalPointerEXT GLEW_GET_FUN(__glewBinormalPointerEXT)
  #define glTangentPointerEXT GLEW_GET_FUN(__glewTangentPointerEXT)
-@@ -10343,21 +10343,21 @@
+@@ -10559,21 +10559,21 @@
  
  typedef void (GLAPIENTRY * PFNGLFRAGMENTCOLORMATERIALEXTPROC) (GLenum face, GLenum mode);
  typedef void (GLAPIENTRY * PFNGLFRAGMENTLIGHTMODELFEXTPROC) (GLenum pname, GLfloat param);
@@ -130,7 +116,7 @@
  typedef void (GLAPIENTRY * PFNGLLIGHTENVIEXTPROC) (GLenum pname, GLint param);
  
  #define glFragmentColorMaterialEXT GLEW_GET_FUN(__glewFragmentColorMaterialEXT)
-@@ -11071,7 +11071,7 @@
+@@ -11280,7 +11280,7 @@
  #define GL_EXT_multi_draw_arrays 1
  
  typedef void (GLAPIENTRY * PFNGLMULTIDRAWARRAYSEXTPROC) (GLenum mode, const GLint* first, const GLsizei *count, GLsizei primcount);
@@ -139,7 +125,7 @@
  
  #define glMultiDrawArraysEXT GLEW_GET_FUN(__glewMultiDrawArraysEXT)
  #define glMultiDrawElementsEXT GLEW_GET_FUN(__glewMultiDrawElementsEXT)
-@@ -13085,21 +13085,21 @@
+@@ -13632,21 +13632,21 @@
  typedef void (GLAPIENTRY * PFNGLGETVARIANTPOINTERVEXTPROC) (GLuint id, GLenum value, void **data);
  typedef void (GLAPIENTRY * PFNGLINSERTCOMPONENTEXTPROC) (GLuint res, GLuint src, GLuint num);
  typedef GLboolean (GLAPIENTRY * PFNGLISVARIANTENABLEDEXTPROC) (GLuint id, GLenum cap);
@@ -172,7 +158,7 @@
  typedef void (GLAPIENTRY * PFNGLWRITEMASKEXTPROC) (GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
  
  #define glBeginVertexShaderEXT GLEW_GET_FUN(__glewBeginVertexShaderEXT)
-@@ -13168,9 +13168,9 @@
+@@ -13715,9 +13715,9 @@
  #define GL_VERTEX_WEIGHT_ARRAY_STRIDE_EXT 0x850F
  #define GL_VERTEX_WEIGHT_ARRAY_POINTER_EXT 0x8510
  
@@ -185,7 +171,7 @@
  
  #define glVertexWeightPointerEXT GLEW_GET_FUN(__glewVertexWeightPointerEXT)
  #define glVertexWeightfEXT GLEW_GET_FUN(__glewVertexWeightfEXT)
-@@ -15932,7 +15932,7 @@
+@@ -16962,7 +16962,7 @@
  #define GL_READ_PIXEL_DATA_RANGE_POINTER_NV 0x887D
  
  typedef void (GLAPIENTRY * PFNGLFLUSHPIXELDATARANGENVPROC) (GLenum target);
@@ -194,7 +180,7 @@
  
  #define glFlushPixelDataRangeNV GLEW_GET_FUN(__glewFlushPixelDataRangeNV)
  #define glPixelDataRangeNV GLEW_GET_FUN(__glewPixelDataRangeNV)
-@@ -16920,7 +16920,7 @@
+@@ -18093,7 +18093,7 @@
  #define GL_VERTEX_ARRAY_RANGE_POINTER_NV 0x8521
  
  typedef void (GLAPIENTRY * PFNGLFLUSHVERTEXARRAYRANGENVPROC) (void);
@@ -203,7 +189,7 @@
  
  #define glFlushVertexArrayRangeNV GLEW_GET_FUN(__glewFlushVertexArrayRangeNV)
  #define glVertexArrayRangeNV GLEW_GET_FUN(__glewVertexArrayRangeNV)
-@@ -18727,21 +18727,21 @@
+@@ -21137,16 +21137,16 @@
  
  typedef void (GLAPIENTRY * PFNGLFRAGMENTCOLORMATERIALSGIXPROC) (GLenum face, GLenum mode);
  typedef void (GLAPIENTRY * PFNGLFRAGMENTLIGHTMODELFSGIXPROC) (GLenum pname, GLfloat param);
@@ -226,14 +212,7 @@
  typedef void (GLAPIENTRY * PFNGLFRAGMENTMATERIALIVSGIXPROC) (GLenum face, GLenum pname, const GLint* params);
  typedef void (GLAPIENTRY * PFNGLGETFRAGMENTLIGHTFVSGIXPROC) (GLenum light, GLenum value, GLfloat* data);
  typedef void (GLAPIENTRY * PFNGLGETFRAGMENTLIGHTIVSGIXPROC) (GLenum light, GLenum value, GLint* data);
--typedef void (GLAPIENTRY * PFNGLGETFRAGMENTMATERIALFVSGIXPROC) (GLenum face, GLenum pname, const GLfloat* data);
--typedef void (GLAPIENTRY * PFNGLGETFRAGMENTMATERIALIVSGIXPROC) (GLenum face, GLenum pname, const GLint* data);
-+typedef void (GLAPIENTRY * PFNGLGETFRAGMENTMATERIALFVSGIXPROC) (GLenum face, GLenum pname, GLfloat* data);
-+typedef void (GLAPIENTRY * PFNGLGETFRAGMENTMATERIALIVSGIXPROC) (GLenum face, GLenum pname, GLint* data);
- 
- #define glFragmentColorMaterialSGIX GLEW_GET_FUN(__glewFragmentColorMaterialSGIX)
- #define glFragmentLightModelfSGIX GLEW_GET_FUN(__glewFragmentLightModelfSGIX)
-@@ -18827,7 +18827,7 @@
+@@ -21237,7 +21237,7 @@
  #define GL_IGLOO_TMESHMODE_SGIX 0x81A4
  #define GL_LIGHT31 0xBEAD
  
@@ -242,7 +221,7 @@
  
  #define glIglooInterfaceSGIX GLEW_GET_FUN(__glewIglooInterfaceSGIX)
  
-@@ -19181,9 +19181,9 @@
+@@ -21591,9 +21591,9 @@
  #define GL_SGIX_sprite 1
  
  typedef void (GLAPIENTRY * PFNGLSPRITEPARAMETERFSGIXPROC) (GLenum pname, GLfloat param);
