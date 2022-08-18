@@ -5,11 +5,11 @@ Version:	2.2.0
 Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/glew/%{name}-%{version}.tgz
+Source0:        https://github.com/nigels-com/glew/releases/download/glew-%{version}/glew-%{version}.tgz
 # Source0-md5:	3579164bccaef09e36c0af7f4fd5c7c7
 Patch0:		%{name}-eglew.patch
 Patch1:		%{name}-const.patch
-URL:		http://glew.sourceforge.net/
+URL:		https://github.com/nigels-com/glew
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	xorg-lib-libX11-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
