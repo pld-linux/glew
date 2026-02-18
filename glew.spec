@@ -66,7 +66,8 @@ Biblioteka statyczna glew.
 	LDFLAGS="%{rpmldflags}" \
 	INCDIR=%{_includedir}/GL \
 	LIBDIR=%{_libdir} \
-	PKGDIR=%{_pkgconfigdir}
+	PKGDIR=%{_pkgconfigdir} \
+	STRIP=
 
 %install
 rm -rf $RPM_BUILD_ROOT
