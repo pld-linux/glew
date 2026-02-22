@@ -5,7 +5,7 @@ Version:	2.2.0
 Release:	2
 License:	BSD
 Group:		Libraries
-Source0:        https://github.com/nigels-com/glew/releases/download/glew-%{version}/glew-%{version}.tgz
+Source0:	https://github.com/nigels-com/glew/releases/download/glew-%{version}/glew-%{version}.tgz
 # Source0-md5:	3579164bccaef09e36c0af7f4fd5c7c7
 Patch0:		%{name}-eglew.patch
 Patch1:		%{name}-const.patch
@@ -92,12 +92,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc LICENSE.txt README.md doc/*.{html,css,png,jpg}
 %attr(755,root,root) %{_bindir}/glewinfo
 %attr(755,root,root) %{_bindir}/visualinfo
-%attr(755,root,root) %{_libdir}/libGLEW.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libGLEW.so.2.2
+%{_libdir}/libGLEW.so.*.*.*
+%ghost %{_libdir}/libGLEW.so.2.2
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libGLEW.so
+%{_libdir}/libGLEW.so
 %{_includedir}/GL/eglew.h
 %{_includedir}/GL/glew.h
 %{_includedir}/GL/glxew.h
